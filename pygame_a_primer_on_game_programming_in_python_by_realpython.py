@@ -15,17 +15,15 @@ from pygame.locals import (
 #Define the constants for the screen width and height.
 SCREEN_WIDTH=800
 SCREEN_HEIGHT=600
-
 #Define a Player object by extending pygame.sprite.Sprite
 #The surface drawn on the screen is now an attribute of 'player'.
 #Moved the Player recipe here.
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-       super(Player,self).__init__()
+       super(self).__init__()
        self.surf = pygame.Surface((75,25))
        self.surf.fill((255,255,255))
        self.rect= self.surf.get_rect()
-
 #Initialize pygame.
 pygame.init()
 #Create the screen object. 
@@ -45,13 +43,11 @@ while running:
            if event.key==K_ESCAPE:
               running=False
        #Check for Quit event. If QUIT, then set running to False.
-       elif event.type==QUIT:
+       elif event.type==QUIT
             running=False
         #Fill the screen black.
         screen.fill((0, 0, 0))
         #Draw the Player on the screen
         screen.blit(player.surf,((SCREEN_WIDTH/2,SCREEN_HEIGHT/2))
         #Update the display
-        pygame.display.flip()
-#
-pygame.quit()
+        pygame.display.flip()   
