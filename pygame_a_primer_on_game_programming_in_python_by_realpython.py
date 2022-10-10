@@ -36,18 +36,18 @@ running=True
 #Main loop.
 while running:
    #For loop through the event queue.
-   for event in pygame.event.get():
+    for event in pygame.event.get():
        #Check for KEYDOWN event.
        if event.type==KEYDOWN:
            #If the esc key is pressed, then exit the main loop.
            if event.key==K_ESCAPE:
               running=False
        #Check for Quit event. If QUIT, then set running to False.
-       elif event.type==QUIT
-            running=False
+    elif event.type==QUIT  
+        running=False
         #Fill the screen black.
         screen.fill((0, 0, 0))
         #Draw the Player on the screen
         screen.blit(player.surf,((SCREEN_WIDTH/2,SCREEN_HEIGHT/2))
         #Update the display
-        pygame.display.flip()   
+        pygame.display.flip() 
