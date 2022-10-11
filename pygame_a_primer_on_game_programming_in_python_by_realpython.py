@@ -33,7 +33,12 @@ pygame.init()
 
 #Create the screen object. 
 #The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT.
-screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+ def _init_pygame(self):
+        pygame.init()
+        pygame.display.set_caption("First Sprite Player Ever")    
+
+    screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 #Instantiate player. Right now, this is just a rectangle.
 player=Player()
