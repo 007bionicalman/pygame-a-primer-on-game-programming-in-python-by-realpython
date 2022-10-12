@@ -98,7 +98,7 @@ while running:
             if event.key==K_ESCAPE:
                 running=False
        #Check for Quit event. If QUIT, then set running to False.
-        elif event.type==QUIT
+        elif event.type==QUIT:
             running=True
         
                      #Fill the screen black.
