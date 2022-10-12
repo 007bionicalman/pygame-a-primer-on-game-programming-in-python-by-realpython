@@ -14,12 +14,14 @@ from pygame.locals import (
     QUIT,
 )
 
+pygame.init()
+
 #Define the constants for the screen width and height.
 SCREEN_WIDTH=800
 SCREEN_HEIGHT=600
 
-screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("First Sprite Player ever")
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("First Sprite Player Ever")
 
 #Define a Player object by extending pygame.sprite.Sprite
 #The surface drawn on the screen is now an attribute of 'player'.
