@@ -45,16 +45,18 @@ pygame.display.set_caption("exersise 2")
 running=True
 
 while running:
-    for event in pygame.event.get():
-        if event.type==KEYDOWN:
-            if event.type== K_ESCAPE:
-                running= False
-
-        elif event.type==QUIT:
-            running=False
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+            elif event.type == QUIT:
+                running = False
 
     pygame.display.flip()
-#exercise 4
+
+
+#exercise 3
 # Import the pygame module
 #import pygame
 
@@ -74,7 +76,7 @@ while running:
 #SCREEN_WIDTH = 800
 #SCREEN_HEIGHT = 600
 #screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-#pygame.display.set_caption("exercise 4: My First Sprite Player Ever")
+#pygame.display.set_caption("exercise 3: My First Sprite Player Ever")
 
 # Define a player object by extending pygame.sprite.Sprite
 # The surface drawn on the screen is now an attribute of 'player'
@@ -115,7 +117,7 @@ while running:
     #screen.fill((0, 0, 0))
 
     # Draw the player on the screen
-    #screen.blit(player.surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+    #0
 
     # Update the display
     #pygame.display.flip()"""
