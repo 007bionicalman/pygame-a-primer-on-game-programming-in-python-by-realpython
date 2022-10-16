@@ -1,5 +1,8 @@
+# Import the pygame module
 import pygame
 
+# Import pygame.locals for easier access to key coordinates
+# Updated to conform to flake8 and black standards
 from pygame.locals import (
     K_UP,
     K_DOWN,
@@ -9,35 +12,64 @@ from pygame.locals import (
     KEYDOWN,
     QUIT,
 )
-#moved Player recipe here
+
+# Define constants for the screen width and height
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
+# Define a player object by extending pygame.sprite.Sprite
+# The surface drawn on the screen is now an attribute of 'player'
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-      def __init__(surf):
-       super (self,Player,surf).__init__()
-       self.surf = pygame.Surface((75,25))
-       self.surf.fill((255,255,255))
-       self.rect= self.surf.get_rect()
+        super(Player, self).__init__()
+        self.surf = pygame.Surface((75, 25))
+        self.surf.fill((255, 255, 255))
+        self.rect = self.surf.get_rect()
 
-SCREEN_WIDTH=800
-SCREEN_HEIGHT=600
-
-
-
+# Initialize pygame
 pygame.init()
 
-screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+# Create the screen object
+# The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-running=True
+# Instantiate player. Right now, this is just a rectangle.
+player = Player()
 
+# Variable to keep the main loop running
+running = True
+def update(self, pressed_keys):
+    if pressed_keys[K_UP]:
+        self.rect.move_ip(0, -5)
+    if pressed_keys[K_DOWN]:
+        self.rect.move_ip(0, 5)
+    if pressed_keys[K_LEFT]:
+        self.rect.move_ip(-5, 0)
+    if pressed_keys[K_RIGHT]:
+        self.rect.move_ip(5, 0)
+
+# Main loop
 while running:
-   for event in pygame.event.get():
-       if event.type==KEYDOWN:
-           if event.key==K_ESCAPE:
-               running=False
-       elif event.type==QUIT:
-           running=False
-#moved screen.fill(()), screen.blit, pygame.display.flip() here
-screen.fill((255, 255, 255))
-screen.blit(Player,surf((SCREEN_WIDTH/2,SCREEN_HEIGHT/2)))
-pygame.display.flip()
-pygame.quit()
+    # for loop through the event queue
+    for event in pygame.event.get():
+        # Check for KEYDOWN event
+        if event.type == KEYDOWN:
+            # If the Esc key is pressed, then exit the main loop
+            if event.key == K_ESCAPE:
+                running = False
+        # Check for QUIT event. If QUIT, then set running to false.
+        elif event.type == QUIT:
+            running = False
+
+
+    # Move the sprite based on user keypresses
+
+    pressed_keys = pygame.key.get_pressed()
+    # Fill the screen with black
+    screen.fill((0, 0, 0))
+
+    # Draw the player on the screen
+    screen.blit(player.surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+
+    # Update the display
+    pygame.display.flip()
