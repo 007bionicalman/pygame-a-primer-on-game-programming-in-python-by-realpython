@@ -38,15 +38,7 @@ player = Player()
 
 # Variable to keep the main loop running
 running = True
-def update(self, pressed_keys):
-    if pressed_keys[K_UP]:
-        self.rect.move_ip(0, -5)
-    if pressed_keys[K_DOWN]:
-        self.rect.move_ip(0, 5)
-    if pressed_keys[K_LEFT]:
-        self.rect.move_ip(-5, 0)
-    if pressed_keys[K_RIGHT]:
-        self.rect.move_ip(5, 0)
+
 
 # Main loop
 while running:
@@ -61,15 +53,24 @@ while running:
         elif event.type == QUIT:
             running = False
 
+    def update(self, pressed_keys):
+        if pressed_keys[K_UP]:
+            self.rect.move_ip(0, -5)
+        if pressed_keys[K_DOWN]:
+            self.rect.move_ip(0, 5)
+        if pressed_keys[K_LEFT]:
+            self.rect.move_ip(-5, 0)
+        if pressed_keys[K_RIGHT]:
+            self.rect.move_ip(5, 0)
 
+        pressed_keys = pygame.key.get_pressed()
     # Move the sprite based on user keypresses
 
-    pressed_keys = pygame.key.get_pressed()
-    # Fill the screen with black
+
+
+
     screen.fill((0, 0, 0))
 
-    # Draw the player on the screen
     screen.blit(player.surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
 
-    # Update the display
     pygame.display.flip()
