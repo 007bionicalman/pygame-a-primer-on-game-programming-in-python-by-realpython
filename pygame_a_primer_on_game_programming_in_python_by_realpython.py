@@ -1,71 +1,34 @@
-# Import the pygame module
 import pygame
 
-# Import pygame.locals for easier access to key coordinates
-# Updated to conform to flake8 and black standards
-from pygame.locals import (
-    K_UP,
-    K_DOWN,
-    K_LEFT,
-    K_RIGHT,
-    K_ESCAPE,
-    KEYDOWN,
-    QUIT,
-)
-
-# Define constants for the screen width and height
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-
-# Define a player object by extending pygame.sprite.Sprite
-# The surface drawn on the screen is now an attribute of 'player'
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super(Player, self).__init__()
-        self.surf = pygame.Surface((75, 25))
-        self.surf.fill((255, 255, 255))
-        self.rect = self.surf.get_rect()
-
-# Initialize pygame
 pygame.init()
 
-# Create the screen object
-# The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode([1000, 1000])
 
-# Instantiate player. Right now, this is just a rectangle.
-player = Player()
-
-# Variable to keep the main loop running
 running = True
 
+x = 500
+y = 500
 
-# Main loop
 while running:
-    # for loop through the event queue
     for event in pygame.event.get():
-        # Check for KEYDOWN event
-        if event.type == KEYDOWN:
-            # If the Esc key is pressed, then exit the main loop
-            if event.key == K_ESCAPE:
-                running = False
-        # Check for QUIT event. If QUIT, then set running to false.
-        elif event.type == QUIT:
+        if event.type == pygame.QUIT:
             running = False
-    def update(self, pressed_keys):
-        if pressed_keys[K_UP]:
-            self.rect.move_ip(0, -5)
-            if pressed_keys[K_DOWN]:
-                self.rect.move_ip(0, 5)
-            if pressed_keys[K_LEFT]:
-                self.rect.move_ip(-5, 0)
-            if pressed_keys[K_RIGHT]:
-                self.rect.move_ip(5, 0)
 
-    pressed_keys = pygame.key.get_pressed()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                x -=10
+            if event.key == pygame.K_RIGHT:
+                x +=10
+            if event.key == pygame.K_UP:
+                y -=10
+            if event.key == pygame.K_DOWN:
+                y +=10
 
-    screen.fill((0, 0, 0))
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, (0, 0, 255), (x, y), 75)
 
-    screen.blit(player.surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+    print (str("x : {} , y : {}").format(x,y) )
 
     pygame.display.flip()
+
+pygame.quit()
