@@ -1,3 +1,5 @@
+#Controlls: arrow keys up, down, right & left
+
 import pygame
 
 pygame.init()
